@@ -35,8 +35,16 @@
 
         {{#each skillDevelopers(currentSkill)}}
           <div class="panel panel-default">
-            <div class="panel-body">
-              {{ this.name }}
+            <div class="panel-body media">
+              <div class="media-left">
+                <img class="media-object img-circle" width="64" height="64" src="{{ this.photo }}" alt="{{ this.name }}">
+              </div>
+              <div class="media-body">
+                <a class="h4 media-heading" href="{{ this.url }}" target="_blank">{{ this.name }}</a>
+                <p>
+                  {{ this.desc }}
+                </p>
+              </div>
             </div>
           </div>
         {{/each}}
