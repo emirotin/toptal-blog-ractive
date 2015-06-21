@@ -11,6 +11,10 @@
     </div>
 
     <script type="text/html" id="tpl-app">
+      {{#partial skill}}
+        <a href="#" class="label label-primary" on-click="select-skill:{{this}}">{{this}}</a>
+      {{/partial}}
+
       {{#partial skillsList}}
         <div class="row">
           <form class="form-horizontal col-xs-6 col-xs-offset-6">
@@ -21,7 +25,7 @@
         <div class="row">
           {{#each skills()}}
           <span class="col-xs-3">
-            <a href="#" class="label label-primary" on-click="select-skill:{{this}}">{{this}}</a>
+            {{> skill}}
           </span>
           {{/each}}
         </div>
@@ -43,6 +47,11 @@
                 <a class="h4 media-heading" href="{{ this.url }}" target="_blank">{{ this.name }}</a>
                 <p>
                   {{ this.desc }}
+                </p>
+                <p>
+                  {{#each this.skills}}
+                    {{> skill}}&nbsp;
+                  {{/each}}
                 </p>
               </div>
             </div>
