@@ -21,7 +21,7 @@
         <div class="row">
           {{#each skills()}}
           <span class="col-xs-3">
-            <a href="#" class="label label-primary" on-click="select-skill:{{.}}">{{.}}</a>
+            <a href="#" class="label label-primary" on-click="select-skill:{{this}}">{{this}}</a>
           </span>
           {{/each}}
         </div>
@@ -32,6 +32,14 @@
           {{ currentSkill }}
           <button type="button" class="close pull-right" on-click="deselect-skill">&times; CLOSE</button>
         </h2>
+
+        {{#each skillDevelopers(currentSkill)}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              {{ this.name }}
+            </div>
+          </div>
+        {{/each}}
       {{/partial}}
 
       {{#if currentSkill}}

@@ -19,6 +19,13 @@
         return _.filter(skillNames, function(skill) {
           return skill.match(skillFilter);
         });
+      },
+
+      skillDevelopers: function(skill) {
+        var slugs = skills[skill].developers;
+        return _.map(slugs, function(slug) {
+          return developers[slug];
+        });
       }
     }
   });
