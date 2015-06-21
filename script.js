@@ -22,8 +22,11 @@
       },
 
       skillDevelopers: function(skill) {
-        var slugs = skills[skill].developers;
-        return _.map(slugs, function(slug) {
+        skill = skills[skill];
+        if (!skill) {
+          return;
+        }
+        return _.map(skill.developers, function(slug) {
           return developers[slug];
         });
       }
