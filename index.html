@@ -12,7 +12,13 @@
 
     <script type="text/html" id="tpl-app">
       <div class="row">
-        {{#each skills}}
+        <form class="form-horizontal col-xs-6 col-xs-offset-6">
+          <input type="search" class="form-control" value="{{ skillFilter }}" placeholder="Type part of the skill name here">
+        </form>
+      </div>
+      <hr>
+      <div class="row">
+        {{#each skills()}}
         <span class="col-xs-3">
           <a href="#" class="label label-primary">{{.}}</a>
         </span>
