@@ -32,7 +32,11 @@ request.getAsync(URL)
   $ = cheerio.load(body)
   $('.page_footer_sample_profile-wrapper .multi_column_list-link').each ->
     $this = $(this)
-    title = $this.text().split(' ')[...-1].join(' ')
+    title = $this.text()
+    if title == 'CTOs'
+      title = 'CTO'
+    else
+      title = title.split(' ')[...-1].join(' ')
     url = URL + $this.attr('href')
     skills[title] = { url }
 .then ->
@@ -55,5 +59,5 @@ request.getAsync(URL)
     developer.skills = _.filter developer.skills, (skill) ->
       !!skills[skill]
   result = { skills, developers }
-  fs.writeFileSync 'data.json', "window.DB = #{JSON.stringify(result)};"
+  fs.writeFileSync 'data.js', "window.DB = #{JSON.stringify(result)};"
   console.timeEnd('Run time')
