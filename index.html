@@ -1,11 +1,27 @@
 <!doctype html>
 <html>
   <head>
+    <title>Toptal Search</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <body>
+    <div class="container">
+      <h1>Toptal Search</h1>
+      <div id="root"></div>
+    </div>
 
-    <script src='http://cdn.ractivejs.org/latest/ractive.js'></script>
+    <script type="text/html" id="tpl-app">
+      <div class="row">
+        {{#each skills}}
+        <span class="col-xs-3">
+          <a href="#" class="label label-primary">{{.}}</a>
+        </span>
+        {{/each}}
+      </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
+    <script src="http://cdn.ractivejs.org/latest/ractive.js"></script>
     <script src="https://rawgit.com/emirotin/toptal-blog-ractive/master/data.js"></script>
     <script src="script.js"></script>
   </body>
