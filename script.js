@@ -7,6 +7,9 @@
     template: '#tpl-app',
     data: {
       skillFilter: null,
+
+      currentSkill: null,
+
       skills: function() {
         var skillFilter = this.get('skillFilter');
         if (!skillFilter) {
@@ -18,6 +21,17 @@
         });
       }
     }
+  });
+
+  app.on('select-skill', function(event, skill) {
+    this.set({
+      currentSkill: skill,
+      skillFilter: null
+    });
+  });
+
+  app.on('deselect-skill', function(event) {
+    this.set('currentSkill', null);
   });
 
 }());

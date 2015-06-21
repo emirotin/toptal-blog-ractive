@@ -11,19 +11,34 @@
     </div>
 
     <script type="text/html" id="tpl-app">
-      <div class="row">
-        <form class="form-horizontal col-xs-6 col-xs-offset-6">
-          <input type="search" class="form-control" value="{{ skillFilter }}" placeholder="Type part of the skill name here">
-        </form>
-      </div>
-      <hr>
-      <div class="row">
-        {{#each skills()}}
-        <span class="col-xs-3">
-          <a href="#" class="label label-primary">{{.}}</a>
-        </span>
-        {{/each}}
-      </div>
+      {{#partial skillsList}}
+        <div class="row">
+          <form class="form-horizontal col-xs-6 col-xs-offset-6">
+            <input type="search" class="form-control" value="{{ skillFilter }}" placeholder="Type part of the skill name here">
+          </form>
+        </div>
+        <hr>
+        <div class="row">
+          {{#each skills()}}
+          <span class="col-xs-3">
+            <a href="#" class="label label-primary" on-click="select-skill:{{.}}">{{.}}</a>
+          </span>
+          {{/each}}
+        </div>
+      {{/partial}}
+
+      {{#partial skillView}}
+        <h2>
+          {{ currentSkill }}
+          <button type="button" class="close pull-right" on-click="deselect-skill">&times; CLOSE</button>
+        </h2>
+      {{/partial}}
+
+      {{#if currentSkill}}
+        {{> skillView}}
+      {{else}}
+        {{> skillsList}}
+      {{/if}}
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
